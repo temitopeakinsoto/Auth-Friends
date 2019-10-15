@@ -1,10 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import withAuth from '../axios'
+
+const friendsApiUrl = 'http://localhost:5000/api/friends';
 
 export default function Friend(){
+    const [friends, setFriends] = useState([]);
 
-    return(
+    useEffect(() => {
+        withAuth().get(friendsApiUrl)
+        .then(response => {
+            setFriends(response.data);
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+        })
+    }, []);
+    return (
         <div>
-            Hello from friends component!
+            {friends.map(friend => 
+            <div key={friend.id}>
+            <p>{friend.name}</p>
+            <p>{friend.age}</p>
+            <p>{friend.email}</p>
+            </div>)}
         </div>
     )
 }

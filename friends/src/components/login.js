@@ -11,7 +11,6 @@ export default function Login(props) {
           password: passwordRef.current.value,
         })
           .then(res => {
-            debugger
             localStorage.setItem('token', res.data.payload)
             props.history.push('/friends');
           })
