@@ -5,10 +5,10 @@ import Friends from "./friends";
 import Login from "./login";
 import NewFriend from "./addfriend";
 
-function Container(props) {
+function Container(props) {  
   const handleLogout = () => {
     localStorage.clear();
-    props.history.replace("/");
+    props.history.replace('/');
   };
 
   return (
@@ -45,4 +45,4 @@ function withAuthed(Component, props) {
   return <Redirect to="/" />;
 }
 
-export default Container;
+export default withRouter(Container);
