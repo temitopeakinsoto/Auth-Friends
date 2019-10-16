@@ -1,9 +1,16 @@
 import React from 'react';
-import {Route, NavLink} from 'react-router-dom';
+import {Route, NavLink, Redirect} from 'react-router-dom';
 import Friends from './friends';
 import Login from './login';
+import NewFriend from './addfriend';
 
-function Container(){
+function Container(props){
+
+  const handleLogout = () => {
+    localStorage.clear();
+    props.history.replace('/');
+
+  }
 
     return(
         <div className='container'>
@@ -11,9 +18,10 @@ function Container(){
         <span>
           <NavLink exact to='/'>Login</NavLink>
           <NavLink to='/friends'>Friends</NavLink>
+          <NavLink to='/addfriend'>Add Friend</NavLink>
         </span>
 
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </nav>
 
       <main>
@@ -27,9 +35,21 @@ function Container(){
           path='/friends'
           component={Friends}
         />
+        <Route
+          exact
+          path='/addfriend'
+          render={props => withAuth(NewFriend, props)}
+        />
       </main>
     </div>
     )
 }
+
+function withAuth(Component, props) {
+  if (localStorage.getItem("token")) {
+    return <Component {...props} />;
+  }
+  return <Redirect to="/" />;
+ }
 
 export default Container;
