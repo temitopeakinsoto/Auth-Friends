@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, NavLink, Redirect } from "react-router-dom";
+import '../App.css';
 import Friends from "./friends";
 import Login from "./login";
 import NewFriend from "./addfriend";
@@ -12,8 +13,8 @@ function Container(props) {
 
   return (
     <div className="container">
-      <nav>
-        <span>
+      <nav className="App-header">
+        <span className="nav-links">
           <NavLink exact to="/">
             Login
           </NavLink>
