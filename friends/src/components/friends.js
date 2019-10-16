@@ -18,7 +18,7 @@ export default function Friend(){
     return (
         <div>
             {friends.map(friend => 
-            <div key={friend.id}>
+            <div key={friend.id} className="friend">
                 <p>{friend.name}</p>
                 <p>{friend.age}</p>
                 <p>{friend.email}</p>
