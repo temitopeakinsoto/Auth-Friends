@@ -5,23 +5,23 @@ const friendsApiUrl = 'http://localhost:5000/api/friends';
 
 export default function Friend(){
     const [friends, setFriends] = useState([]);
-
+    
     useEffect(() => {
         withAuth().get(friendsApiUrl)
         .then(response => {
             setFriends(response.data);
         })
         .catch(error => {
-            alert(error.response.data.message);
+            alert(error.response.data.error);
         })
     }, []);
     return (
         <div>
             {friends.map(friend => 
             <div key={friend.id}>
-            <p>{friend.name}</p>
-            <p>{friend.age}</p>
-            <p>{friend.email}</p>
+                <p>{friend.name}</p>
+                <p>{friend.age}</p>
+                <p>{friend.email}</p>
             </div>)}
         </div>
     )
