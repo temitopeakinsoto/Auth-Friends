@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import axios from "axios";
+import '../App.css'
 
 export default function Login(props) {
   const usernameRef = useRef();
@@ -21,7 +22,8 @@ export default function Login(props) {
   };
 
   return (
-    <div>
+    <div className="login">
+      <h3>Login</h3>
       <div>
         <span>Username:</span>
         <input ref={usernameRef} type="text" />

@@ -19,12 +19,21 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 350px;
-  list-style: none;
+  width: 350px;  
+}
+
+.link {
+  text-decoration: none;
 }
 
 .App-link {
   color: #09d3ac;
+}
+
+.main {
+  width: 30%;
+    margin: 50px auto;
+    height: 100px;
 }
 
 .friend{
