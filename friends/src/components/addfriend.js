@@ -1,13 +1,15 @@
 import React,{ useRef } from 'react';
 import withAuth from '../axios';
 
+const friendsApiUrl = 'http://localhost:5000/api/friends';
+
 export default function NewFriend(props) {
     const nameRef = useRef();
     const emailRef = useRef();
     const ageRef = useRef();
 
     const submit = () => {
-        withAuth().post("http://localhost:5000/api/friends/", {
+        withAuth().post(friendsApiUrl, {
           name: nameRef.current.value,
           email: emailRef.current.value,
           age: ageRef.current.value,
